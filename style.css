@@ -1,7 +1,7 @@
 :root {
     --pink: #EA028C;
     --yellow: #FFDD2F;
-    --box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.3);
+    --box-shadow: 0px 5px 14px 1px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -17,29 +17,51 @@ body,html {
 /* NAVBAR */
 nav {
     width: 100%;
-    padding: 1rem 1.5rem;
     position: fixed;
+    z-index: 9999;
 }
 
 nav .navbar-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 0px;
+    position: relative;
 }
+
+nav .navbar-nav::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+
+} 
 
 nav .link-navbar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     order: 1;
+    position: relative;
+    z-index: 2000;
 }
 
 nav .sosmed {
     order: 0;
 }
 
+.sosmed .fa-instagram {
+    padding-left: 1.5rem;
+}
+
 nav .sosmed a {
-    color: black;
+    position: relative;
+    z-index: 2001;
+    color: var(--pink);
     text-decoration: none;
     font-size: 1.7rem;
     margin-right: 10px;
@@ -52,7 +74,7 @@ nav .sosmed a {
     text-decoration: none;
     font-family: poppins;
     font-weight: 500;
-    color: black;
+    color: var(--pink);
 }
 
 .navbar-nav .link-navbar a::after {
@@ -104,13 +126,21 @@ header .title-header{
     margin-top: 1.1rem;
 }
 
+.description-header span {
+    display: inline-block;
+    /* margin-top: .7rem; */
+    font-family: nitnit;
+    font-size: 3rem;
+    color: var(--pink);
+}
+
 .button-header {
     padding: .9rem 2rem;
     border: none;
     color: white;
     background-color: var(--pink);
     font-size: .8rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     border-radius: 20px;
     font-family: poppins;
     font-weight: 500;
@@ -181,7 +211,8 @@ header .title-header{
 #products {
     width: 100%;
     height: 100%;
-    background-color: var(--yellow);
+    background-color: white;
+    margin-top: -30px;
 }
 
 .container-products .title-product {
@@ -189,7 +220,7 @@ header .title-header{
     font-family: itim;
     color: var(--pink);
     text-align: center;
-    padding-top: 5rem;
+    /* padding-top: 5rem; */
     line-height: 85px;
     letter-spacing: .3px;
     margin-bottom: 6rem;
@@ -206,11 +237,20 @@ header .title-header{
     padding-right: 1rem;
     border-radius: 20px;
     border: 3px solid white;
-    box-shadow: var(--box-shadow);
+}
+
+.shadow {
+    box-shadow:  28px 28px 50px #acacac,
+    -28px -28px 50px #ffffff;
+}
+
+.shadow-kecil {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
 }
 
 .card-product .img-product {
     flex: 1;
+    border-radius: 25px;
 }
 
 .card-product img {
@@ -223,6 +263,7 @@ header .title-header{
 
 .card-product .description-product {
     flex: 2;
+    position: relative;
     width: 100%;
     height: 100%;
     padding: 5px 0px;
@@ -232,7 +273,7 @@ header .title-header{
     font-family: itim;
     font-size: 3rem;
     color: black;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .card-product .description-product p {
@@ -271,10 +312,187 @@ header .title-header{
     margin-top: 20px;
 }
 
+/* TESTIMONY */
+#testimony {
+    background-color: var(--yellow);
+    width: 100%;
+    height: 100%;
+    margin-top: -20px;
+    /* padding-bottom: 2.6rem; */
+}
+
+.title-testimony {
+    font-size: 7.4rem;
+    font-family: itim;
+    color: var(--pink);
+    text-align: center;
+    margin-top: -70px;
+    line-height: 85px;
+    letter-spacing: .3px;
+    margin-bottom: 6rem;
+}
+
+#testimony .container-testimony {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#testimony .content-testimony {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 20px;
+}
+
+#testimony .container-testimony img {
+    width: 450px;
+    height: 550px;
+    border: 5px solid var(--pink);
+    margin: 0px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 17px 2px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1.7rem;
+}
+
+.see-more {
+    display: none;
+}
+
+.container-btn-see-more .btn-see-more.hapus-btn {
+    display: none;
+}
+
+.container-btn-see-more {
+    height: 100%;
+    width: 100%;
+}
+
+.container-btn-see-more .btn-see-more {
+    padding: .9rem 2rem;
+    border: none;
+    color: white;
+    background-color: var(--pink);
+    font-size: .8rem;
+    margin-top: 1rem;
+    border-radius: 20px;
+    font-family: poppins;
+    font-weight: 500;
+    transition: .4s;
+    cursor: pointer;
+    display: block;
+    margin: 0px auto;
+}
+
+.container-btn-see-more .btn-see-more:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 24px .5px rgba(0, 0, 0, 0.3);
+}
+
+/* GALLERY */
+#gallery {
+    width: 100%;
+    height: 100%;
+    /* padding-bottom: 100px; */
+}
+
+.title-gallery {
+    font-size: 7.4rem;
+    font-family: itim;
+    color: var(--pink);
+    text-align: center;
+    line-height: 85px;
+    letter-spacing: .3px;
+    margin-bottom: 6rem;
+    margin-top: -3rem;
+}
+
+.swiper {
+    width: 60%;
+    height: 26rem;
+    display: flex;
+    border: 5px solid var(--pink);
+    border-radius: 20px;
+}
+
+.swiper .swiper-wrapper {
+    text-align: center;
+}
+
+.swiper-wrapper img {
+    background-size: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* FOOTER */
+#footer {
+    width: 100%;
+    height: 100%;
+    background-color: var(--yellow);
+    font-family: poppins;
+}
+
+.container-footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: -50px;
+    padding-bottom: 1rem;
+    font-size: .9rem;
+}
+
+.container-footer .title-footer {
+    font-size: 2rem;
+    color: var(--pink);
+    margin-bottom: .9rem;
+    border-bottom: 2px solid var(--pink);
+}
+
+.links ul li {
+    list-style: none;
+}
+
+.container-footer .button-footer button {
+    margin-top: 1rem;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: none;
+    font-size: .7rem;
+    background-color: white;
+    color: var(--pink);
+    font-weight: 600;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.container-footer .button-footer button:hover {
+    background-color: var(--pink);
+    color: white;
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+}
 
 
 
-@media (max-width: 564px) {
+@media (max-width: 1920px) {
+    .container-keunggulan .card {
+        padding: 3.8rem 0px;
+    }
+
+    .container-keunggulan .card i {
+        font-size: 6.7rem;
+    }
+
+    .container-keunggulan .card p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
     nav .navbar-nav .link-navbar {
         display: flex;
         flex-direction: column;
@@ -295,6 +513,7 @@ header .title-header{
         width: 100%;
         display: flex;
         justify-content: flex-end;
+        padding: 1rem 1.2rem;
     }
 
     .hamburger-menu {
@@ -373,6 +592,152 @@ header .title-header{
         width: 80%;
     }
 
+    nav .navbar-nav::after{
+        display: none;
+    }
+
+    .sosmed .fa-instagram {
+        padding-left: 0px;
+    }
+
+ /* PRODUCTS */
+    #products {
+        margin-bottom: 1.4rem;
+    }
+    
+        .card-product {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            padding: .3rem;
+            margin-top: 1rem;
+            height: 100%;
+            margin-bottom: 3rem;
+        }
+    
+        .card-product .img-product img{
+            height: 250px;
+        }
+    
+        .container-products .title-product {
+            margin-bottom: 2.4rem;
+            font-size: 5rem;
+            padding-top: 2rem;
+        }
+    
+        .container-products .description-product h1 {
+            margin-top: 1px;
+        }
+    
+        .container-products .description-product {
+            padding: 2px 14px;
+        }
+    
+        .description-product .harga-bubuk-puding {
+            margin-top: 3px;
+        }
+        
+        .card-product .description-product button {
+            margin-top: 2rem;
+        }
+    
+        .card-product .description-product .roti-maryam {
+            font-size: 2.4rem;
+        }
+
+        
+    /* TESTIMONY */
+    #testimony {
+        margin-top: -5px;
+    }
+
+    .title-testimony {
+        margin-top: -10px;
+        font-size: 4.7rem;
+        margin-bottom: 2.5rem;
+    }
+
+    #testimony .container-testimony{
+        flex-direction: column;
+        
+    }
+
+    #testimony .content-testimony {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #testimony .container-testimony img {
+        width: 300px;
+        height: 370px;
+        background-size: cover;
+    }
+
+    /* GALLERY */
+    #gallery {
+        margin-bottom: 2rem;
+    }
+
+    .title-gallery {
+        font-size: 4.7rem;
+        margin-top: .5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .swiper {
+        width: 80%;
+        height: 20rem;
+    }
+}
+
+
+@media (max-width: 660px) {
+        /* KEUNGGULAN */
+        .container-keunggulan {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            margin: 0px auto;
+        }
+    
+        .container-keunggulan .card {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+    /*  FOOTER */
+    .container-footer {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        padding-left: 1.2rem;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+    }
+
+    .container-footer .title-footer {
+        border-bottom: none;
+        font-size: 1.3rem;
+    }
+
+    .container-footer ul li a {
+        font-size: .8rem;
+        font-family: poppins;
+        color: black;
+    }
+
+    .container-footer .links {
+        padding-left: 1rem;
+    }
+
+    .button-footer button {
+        margin-top: -1rem
+    }
+}
+
+
+@media (max-width: 564px) {
+
     /* header */
     .img-header {
         height: 200px;
@@ -388,52 +753,15 @@ header .title-header{
         background-color: yellow;
     }
 
-    /* KEUNGGULAN */
-    .container-keunggulan {
-        display: flex;
-        flex-direction: column;
-        width: 70%;
-        margin: 0px auto;
-    }
-
-
     /* PRODUCTS */
-    .card-product {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        padding: .3rem;
-        margin-top: 1rem;
-        height: 100%;
-    }
-
-    .card-product .img-product img{
-        height: 250px;
-    }
-
-    .container-products .title-product {
-        margin-bottom: 2.4rem;
-        font-size: 5rem;
-        padding-top: 2rem;
-    }
-
-    .container-products .description-product h1 {
-        margin-top: 1px;
-    }
-
-    .container-products .description-product {
-        padding: 2px 14px;
-    }
-
-    .description-product .harga-bubuk-puding {
-        margin-top: 3px;
+    .container-products .description-product p {
+        font-size: 1rem;
     }
     
-    .card-product .description-product button {
-        margin-top: 2rem;
+    /* FOOTER */
+    .container-footer .button-footer button {
+        font-weight: 500;
     }
-
-    
 }
 
 /* FONTS */
